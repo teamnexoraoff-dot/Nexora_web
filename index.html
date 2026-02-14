@@ -259,10 +259,12 @@
             to { transform: rotate(360deg); }
         }
 
-        .hero-icon {
-            font-size: 8rem;
-            opacity: 0.9;
-            z-index: 1;
+       .hero-icon {
+            width: 280px;      /* Adjust size here */
+            height: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Trust Badges */
@@ -848,9 +850,10 @@
                 font-size: 1.1rem;
             }
             .hero-icon img {
-                width: 160px;
-                height: auto;
-                filter: drop-shadow(0 0 20px #00f7ff);
+                width: 100%;
+                height: 100%;
+                object-fit: contain;   /* Important */
+                border-radius: 20px;   /* Optional – smooth corners */
             }
 
             .hero-buttons {
@@ -901,7 +904,7 @@
             <div class="hero-image">
                 <div class="hero-visual">
                     <div class="hero-icon">
-                        <img src="NEXORA_LOG.jpeg" alt="Nexora Logo">
+                        <img src="NEXORA.jpeg" alt="Nexora">
                     </div>
                 </div>
             </div>
