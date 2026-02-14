@@ -266,8 +266,11 @@
         }
 
         .hero-icon {
-            font-size: 8rem;
-            opacity: 0.9;
+            width: 80%;          /* control logo size */
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             z-index: 1;
         }
 
@@ -866,6 +869,8 @@
             .nex-logo {
                 height: 100%;
                 width: 100%;
+                object-fit: contain;   /* keeps logo fully visible */
+                display: block;
             }
         }
     </style>
