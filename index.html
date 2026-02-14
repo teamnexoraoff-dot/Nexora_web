@@ -873,7 +873,7 @@
             <div class="logo">
                 <div class="logo-icon">
                     <!-- Replace 'logo.png' with your logo file name -->
-                    <img src="https://github.com/teamnexoraoff-dot/Nexora_web/blob/main/NEXORA_LOG.jpeg" alt="NEXORA Logo">
+                    <img src="logo.png" alt="NEXORA Logo">
                 </div>
                 NEXORA
             </div>
@@ -1200,14 +1200,13 @@
 
             <div class="contact-form-container">
                 <div id="successMessage" class="success-message">
-                    ✓ Thank you for reaching out! Our team will contact you within 24 hours.
+                    ✓ Thank you for enrolling! Our team will contact you soon.
                 </div>
                 
                 <form id="contactForm" action="https://formsubmit.co/team.nexora.off@gmail.com" method="POST">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_subject" value="New Contact Inquiry - NEXORA">
                     <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="#contact">
                     <input type="hidden" name="_autoresponse" value="Thank you for contacting NEXORA! Our team will get back to you within 24 hours.">
 
                     <div class="form-group">
@@ -1266,7 +1265,7 @@
                     <div class="logo">
                         <div class="logo-icon">
                             <!-- Replace 'logo.png' with your logo file name -->
-                            <img src="https://github.com/teamnexoraoff-dot/Nexora_web/blob/main/NEXORA_LOG.jpeg" alt="NEXORA Logo">
+                            <img src="logo.png" alt="NEXORA Logo">
                         </div>
                         NEXORA
                     </div>
@@ -1331,22 +1330,48 @@
         const contactForm = document.getElementById('contactForm');
         const successMessage = document.getElementById('successMessage');
 
-        // Check if form was just submitted
-        if (window.location.hash === '#contact' && document.referrer.includes(window.location.hostname)) {
-            successMessage.classList.add('show');
-            contactForm.style.display = 'none';
-            setTimeout(() => {
-                contactForm.style.display = 'block';
-                successMessage.classList.remove('show');
-            }, 8000);
-        }
-
-        // Alternative: Handle form submission with JavaScript
         contactForm.addEventListener('submit', function(e) {
-            // Let the form submit normally, but show a loading state
+            e.preventDefault();
+            
             const submitButton = this.querySelector('.submit-button');
+            const formData = new FormData(this);
+            
+            // Show loading state
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
+            
+            // Submit form using fetch
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                // Show success message
+                successMessage.classList.add('show');
+                contactForm.reset();
+                
+                // Hide form temporarily
+                contactForm.style.opacity = '0.5';
+                contactForm.style.pointerEvents = 'none';
+                
+                // Reset button
+                submitButton.textContent = 'Send Message';
+                submitButton.disabled = false;
+                
+                // Re-enable form after 8 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                    contactForm.style.opacity = '1';
+                    contactForm.style.pointerEvents = 'auto';
+                }, 8000);
+            }).catch(error => {
+                // On error, still submit the form normally
+                submitButton.textContent = 'Send Message';
+                submitButton.disabled = false;
+                this.submit();
+            });
         });
 
         // Add active state to navigation on scroll
