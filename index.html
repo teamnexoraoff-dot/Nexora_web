@@ -169,10 +169,6 @@
             margin-bottom: 2.5rem;
             line-height: 1.7;
         }
-        .hero-visual {
-            width: 250px;
-            height: 250px;
-        }
 
         .hero-buttons {
             display: flex;
@@ -257,6 +253,12 @@
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        .hero-icon {
+            font-size: 8rem;
+            opacity: 0.9;
+            z-index: 1;
         }
 
         /* Trust Badges */
@@ -841,22 +843,6 @@
             .hero-content p {
                 font-size: 1.1rem;
             }
-            .hero-icon {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            
-                width: 300px;      /* Adjust if needed */
-                height: auto;      /* Important */
-            }
-            
-            .hero-icon img {
-                width: 100%;
-                height: auto;      /* Important */
-                object-fit: contain;
-                display: block;
-            }
-
 
             .hero-buttons {
                 flex-direction: column;
@@ -905,9 +891,7 @@
             </div>
             <div class="hero-image">
                 <div class="hero-visual">
-                    <div class="hero-icon">
-                        <img src="NEXORA.jpeg" alt="Nexora">
-                    </div>
+                    <div class="hero-icon">💻</div>
                 </div>
             </div>
         </div>
