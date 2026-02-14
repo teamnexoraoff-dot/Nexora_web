@@ -259,14 +259,6 @@
             to { transform: rotate(360deg); }
         }
 
-       .hero-icon {
-            width: 280px;      /* Adjust size here */
-            height: 280px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
         /* Trust Badges */
         .trust-badges {
             background: white;
@@ -849,12 +841,22 @@
             .hero-content p {
                 font-size: 1.1rem;
             }
+            .hero-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            
+                width: 300px;      /* Adjust if needed */
+                height: auto;      /* Important */
+            }
+            
             .hero-icon img {
                 width: 100%;
-                height: 100%;
-                object-fit: contain;   /* Important */
-                border-radius: 20px;   /* Optional – smooth corners */
+                height: auto;      /* Important */
+                object-fit: contain;
+                display: block;
             }
+
 
             .hero-buttons {
                 flex-direction: column;
